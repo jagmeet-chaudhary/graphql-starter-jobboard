@@ -12,4 +12,10 @@ const Company = {
 const Job = {
     company: (job) => db.companies.get(job.companyId)
 }
-module.exports = { Query, Job,Company };
+const Mutation = {
+    createJob : (root,{input}) => {
+        const id = db.jobs.create(input);
+        return db.jobs.get(id);
+    }
+}
+module.exports = { Query, Job,Company,Mutation };
